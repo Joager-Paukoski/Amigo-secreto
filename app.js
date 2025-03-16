@@ -1,12 +1,7 @@
 let listaAmigos = [];
 
-function exibirTexto (tag, texto) {
-    let campo = document.querySelector(tag);
-    campo.innerHTML = texto;
-}
-
 function limparCampo(){
-    amigoAdicionado = document.querySelector('input');
+    let amigoAdicionado = document.querySelector('input');
     amigoAdicionado.value = '';
 }
 
@@ -19,15 +14,26 @@ function adicionarAmigo() {
         listaAmigos.push(amigoAdicionado);
     }
     limparCampo();
-    atualizarLista();
+    exibirLista();
 }
 
-function atualizarLista() {
-    let listaAmigosAtual = document.querySelector('ul');
-    listaAmigosAtual.innerHTML = '';
+function exibirLista() {
+    let lista = document.getElementById('listaAmigos');
+    lista.innerHTML = '';
     listaAmigos.forEach((nome,index) => {
         let li = document.createElement('li');
         li.textContent = nome;
-        listaAmigosAtual.appendChild(li);
+        lista.appendChild(li);
     });
+}
+
+function sortearAmigo() {
+    if(listaAmigos.length <= 1){
+        alert('Adicione pelo menos dois nomes antes de sortear.');
+    }
+    else {
+        let amigoSorteado = listaAmigos[Math.floor(Math.random()*listaAmigos.length)];
+        let exibirResultado = document.getElementById('resultado');
+        exibirResultado.innerText = `O amigo secreto sorteado foi: ${amigoSorteado}`
+    }
 }

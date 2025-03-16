@@ -28,12 +28,13 @@ function exibirLista() {
 }
 
 function sortearAmigo() {
-    if(listaAmigos.length <= 1){
-        alert('Adicione pelo menos dois nomes antes de sortear.');
+    if(listaAmigos.length == 0){
+        alert('Adicione pelo menos um nome antes de sortear.');
     }
     else {
-        let amigoSorteado = listaAmigos[Math.floor(Math.random()*listaAmigos.length)];
+        let indiceSorteado = Math.floor(Math.random()*listaAmigos.length);
+        let amigoSorteado = listaAmigos[indiceSorteado];
         let exibirResultado = document.getElementById('resultado');
-        exibirResultado.innerText = `O amigo secreto sorteado foi: ${amigoSorteado}`
+        exibirResultado.innerHTML = `O amigo secreto sorteado foi: ${amigoSorteado}`
     }
 }

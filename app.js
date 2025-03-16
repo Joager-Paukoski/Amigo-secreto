@@ -17,7 +17,17 @@ function adicionarAmigo() {
     }
     else {
         listaAmigos.push(amigoAdicionado);
-        exibirTexto('ul', `${listaAmigos}`);
     }
     limparCampo();
+    atualizarLista();
+}
+
+function atualizarLista() {
+    let listaAmigosAtual = document.querySelector('ul');
+    listaAmigosAtual.innerHTML = '';
+    listaAmigos.forEach((nome,index) => {
+        let li = document.createElement('li');
+        li.textContent = nome;
+        listaAmigosAtual.appendChild(li);
+    });
 }
